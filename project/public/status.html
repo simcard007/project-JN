@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>สถิติ | Meeting Room</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<aside class="sidebar">
+
+    <div class="sidebar-logo">
+
+        <div class="sidebar-logo-icon">
+            M
+        </div>
+
+        <div>
+
+            <h2>Meeting Room</h2>
+
+            <span>
+                Booking System
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <nav class="sidebar-menu">
+
+        <a
+            href="index.html"
+            class="sidebar-item"
+        >
+            🏠
+            <span>Dashboard</span>
+        </a>
+
+
+        <a
+            href="room.html"
+            class="sidebar-item"
+        >
+            📅
+            <span>การจองห้อง</span>
+        </a>
+
+
+        <a
+            href="meet.html"
+            class="sidebar-item"
+        >
+            🏢
+            <span>ห้องประชุม</span>
+        </a>
+
+
+        <a
+            href="status.html"
+            class="sidebar-item active"
+        >
+            📊
+            <span>สถิติ</span>
+        </a>
+
+
+        <a
+            href="admin.html"
+            id="adminMenu"
+            class="sidebar-item"
+        >
+            ⚙️
+            <span>Admin</span>
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <a
+            href="profile.html"
+            class="sidebar-profile"
+        >
+
+            <div
+                id="sidebarAvatar"
+                class="sidebar-avatar"
+            >
+                U
+            </div>
+
+            <div class="sidebar-user-info">
+
+                <strong id="sidebarUsername">
+                    User
+                </strong>
+
+                <span data-user-role>
+                    User
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <button
+            id="sidebarLogout"
+            class="sidebar-logout"
+        >
+            🚪 ออกจากระบบ
+        </button>
+
+    </div>
+
+</aside>
+
+
+
+<main class="content">
+
+
+    <header class="page-header">
+
+        <div>
+
+            <h1>
+                สถิติ
+            </h1>
+
+            <p>
+                สรุปข้อมูลการจองของคุณ
+            </p>
+
+        </div>
+
+    </header>
+
+
+
+    <section class="stats">
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                📅
+            </div>
+
+            <div>
+
+                <p>
+                    การจองทั้งหมด
+                </p>
+
+                <h2 id="totalBooking">
+                    0
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                🏢
+            </div>
+
+            <div>
+
+                <p>
+                    ห้องที่ใช้งาน
+                </p>
+
+                <h2 id="roomCount">
+                    0
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                🎥
+            </div>
+
+            <div>
+
+                <p>
+                    อุปกรณ์
+                </p>
+
+                <h2 id="equipmentCount">
+                    0
+                </h2>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <section class="card">
+
+
+        <div class="card-title">
+
+            <h2>
+                สรุปการใช้งาน
+            </h2>
+
+            <p>
+                ข้อมูลจะอ้างอิงจากรายการจองของบัญชีที่เข้าสู่ระบบ
+            </p>
+
+        </div>
+
+
+        <div class="status-summary">
+
+
+            <div class="summary-row">
+
+                <span>
+                    👤 ผู้ใช้งาน
+                </span>
+
+                <strong id="statusUsername">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <span>
+                    📅 จำนวนการจอง
+                </span>
+
+                <strong id="statusBookings">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <span>
+                    🏢 จำนวนห้อง
+                </span>
+
+                <strong id="statusRooms">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <span>
+                    🎥 การใช้อุปกรณ์
+                </span>
+
+                <strong id="statusEquipment">
+                    0
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+<script src="script.js"></script>
+
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const username =
+            sessionStorage.getItem(
+                "currentUser"
+            );
+
+
+        const bookings =
+            getMyBookings();
+
+
+        const rooms =
+            new Set(
+                bookings.map(
+                    function (booking) {
+                        return booking.room;
+                    }
+                )
+            );
+
+
+        const equipment =
+            bookings.filter(
+                function (booking) {
+
+                    return (
+                        booking.equipment &&
+                        booking.equipment !==
+                            "ไม่มี"
+                    );
+
+                }
+            );
+
+
+        document.getElementById(
+            "statusUsername"
+        ).textContent =
+            username || "-";
+
+
+        document.getElementById(
+            "statusBookings"
+        ).textContent =
+            bookings.length;
+
+
+        document.getElementById(
+            "statusRooms"
+        ).textContent =
+            rooms.size;
+
+
+        document.getElementById(
+            "statusEquipment"
+        ).textContent =
+            equipment.length;
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

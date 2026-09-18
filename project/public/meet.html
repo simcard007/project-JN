@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ห้องประชุม | Meeting Room</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<aside class="sidebar">
+
+    <div class="sidebar-logo">
+
+        <div class="sidebar-logo-icon">
+            M
+        </div>
+
+        <div>
+
+            <h2>Meeting Room</h2>
+
+            <span>
+                Booking System
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <nav class="sidebar-menu">
+
+        <a
+            href="index.html"
+            class="sidebar-item"
+        >
+            🏠
+            <span>Dashboard</span>
+        </a>
+
+
+        <a
+            href="room.html"
+            class="sidebar-item"
+        >
+            📅
+            <span>การจองห้อง</span>
+        </a>
+
+
+        <a
+            href="meet.html"
+            class="sidebar-item active"
+        >
+            🏢
+            <span>ห้องประชุม</span>
+        </a>
+
+
+        <a
+            href="status.html"
+            class="sidebar-item"
+        >
+            📊
+            <span>สถิติ</span>
+        </a>
+
+
+        <a
+            href="admin.html"
+            id="adminMenu"
+            class="sidebar-item"
+        >
+            ⚙️
+            <span>Admin</span>
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <a
+            href="profile.html"
+            class="sidebar-profile"
+        >
+
+            <div
+                id="sidebarAvatar"
+                class="sidebar-avatar"
+            >
+                U
+            </div>
+
+            <div class="sidebar-user-info">
+
+                <strong id="sidebarUsername">
+                    User
+                </strong>
+
+                <span data-user-role>
+                    User
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <button
+            id="sidebarLogout"
+            class="sidebar-logout"
+        >
+            🚪 ออกจากระบบ
+        </button>
+
+    </div>
+
+</aside>
+
+
+
+<main class="content">
+
+
+    <header class="page-header">
+
+        <div>
+
+            <h1>
+                ห้องประชุม
+            </h1>
+
+            <p>
+                ตรวจสอบสถานะห้องประชุม
+            </p>
+
+        </div>
+
+    </header>
+
+
+
+    <section class="room-grid">
+
+
+        <!-- ROOM A -->
+
+        <div class="room-card">
+
+            <div class="room-icon">
+                🏢
+            </div>
+
+            <div class="room-card-header">
+
+                <div>
+
+                    <h2>
+                        Meeting Room A
+                    </h2>
+
+                    <p>
+                        ห้องประชุม A
+                    </p>
+
+                </div>
+
+
+                <span
+                    id="statusA"
+                    class="status-badge"
+                >
+                    ว่าง
+                </span>
+
+            </div>
+
+
+            <div
+                id="bookingA"
+                class="room-booking"
+            >
+                กำลังโหลด...
+            </div>
+
+        </div>
+
+
+
+        <!-- ROOM B -->
+
+        <div class="room-card">
+
+            <div class="room-icon">
+                🏢
+            </div>
+
+            <div class="room-card-header">
+
+                <div>
+
+                    <h2>
+                        Meeting Room B
+                    </h2>
+
+                    <p>
+                        ห้องประชุม B
+                    </p>
+
+                </div>
+
+
+                <span
+                    id="statusB"
+                    class="status-badge"
+                >
+                    ว่าง
+                </span>
+
+            </div>
+
+
+            <div
+                id="bookingB"
+                class="room-booking"
+            >
+                กำลังโหลด...
+            </div>
+
+        </div>
+
+
+
+        <!-- ROOM C -->
+
+        <div class="room-card">
+
+            <div class="room-icon">
+                🏢
+            </div>
+
+            <div class="room-card-header">
+
+                <div>
+
+                    <h2>
+                        Meeting Room C
+                    </h2>
+
+                    <p>
+                        ห้องประชุม C
+                    </p>
+
+                </div>
+
+
+                <span
+                    id="statusC"
+                    class="status-badge"
+                >
+                    ว่าง
+                </span>
+
+            </div>
+
+
+            <div
+                id="bookingC"
+                class="room-booking"
+            >
+                กำลังโหลด...
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <section class="card">
+
+
+        <div class="card-title">
+
+            <h2>
+                รายการจองวันนี้
+            </h2>
+
+            <p>
+                ตรวจสอบการใช้งานห้องประชุมในวันนี้
+            </p>
+
+        </div>
+
+
+        <div
+            id="todayBookingList"
+            class="today-booking-list"
+        >
+
+            กำลังโหลด...
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+<script src="script.js"></script>
+
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        updateMeetingRooms();
+
+        updateTodayBookingList();
+
+    }
+);
+
+
+// ========================================
+// MEETING ROOM STATUS
+// ========================================
+
+function updateMeetingRooms() {
+
+    const bookings =
+        getBookings();
+
+
+    const rooms = [
+        {
+            name: "Meeting Room A",
+            status: "statusA",
+            booking: "bookingA"
+        },
+        {
+            name: "Meeting Room B",
+            status: "statusB",
+            booking: "bookingB"
+        },
+        {
+            name: "Meeting Room C",
+            status: "statusC",
+            booking: "bookingC"
+        }
+    ];
+
+
+    const today =
+        new Date()
+            .toISOString()
+            .split("T")[0];
+
+
+    rooms.forEach(function (room) {
+
+        const booking =
+            bookings.find(
+                function (item) {
+
+                    return (
+                        item.room === room.name &&
+                        item.date === today
+                    );
+
+                }
+            );
+
+
+        const statusElement =
+            document.getElementById(
+                room.status
+            );
+
+
+        const bookingElement =
+            document.getElementById(
+                room.booking
+            );
+
+
+        if (!statusElement ||
+            !bookingElement) {
+
+            return;
+
+        }
+
+
+        if (booking) {
+
+            statusElement.textContent =
+                "ถูกจอง";
+
+            statusElement.classList.add(
+                "booked"
+            );
+
+
+            bookingElement.innerHTML = `
+                <div class="booking-info">
+
+                    <strong>
+                        ${escapeHTML(
+                            booking.name
+                        )}
+                    </strong>
+
+                    <span>
+                        🕐 ${escapeHTML(
+                            booking.time
+                        )}
+                    </span>
+
+                    <span>
+                        🎥 ${escapeHTML(
+                            booking.equipment
+                        )}
+                    </span>
+
+                </div>
+            `;
+
+        } else {
+
+            statusElement.textContent =
+                "ว่าง";
+
+            statusElement.classList.remove(
+                "booked"
+            );
+
+
+            bookingElement.innerHTML = `
+                <div class="no-booking">
+                    ✓ ห้องว่างวันนี้
+                </div>
+            `;
+
+        }
+
+    });
+
+}
+
+
+// ========================================
+// TODAY BOOKINGS
+// ========================================
+
+function updateTodayBookingList() {
+
+    const element =
+        document.getElementById(
+            "todayBookingList"
+        );
+
+
+    if (!element) {
+        return;
+    }
+
+
+    const today =
+        new Date()
+            .toISOString()
+            .split("T")[0];
+
+
+    const bookings =
+        getBookings()
+            .filter(
+                function (booking) {
+
+                    return (
+                        booking.date ===
+                        today
+                    );
+
+                }
+            )
+            .sort(
+                function (a, b) {
+
+                    return a.time
+                        .localeCompare(
+                            b.time
+                        );
+
+                }
+            );
+
+
+    if (!bookings.length) {
+
+        element.innerHTML = `
+            <div class="no-booking">
+                วันนี้ยังไม่มีการจอง
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    element.innerHTML =
+        bookings.map(
+            function (booking) {
+
+                return `
+                    <div class="today-booking">
+
+                        <strong>
+                            ${escapeHTML(
+                                booking.room
+                            )}
+                        </strong>
+
+                        <span>
+                            ${escapeHTML(
+                                booking.time
+                            )}
+                        </span>
+
+                        <span>
+                            ${escapeHTML(
+                                booking.name
+                            )}
+                        </span>
+
+                    </div>
+                `;
+
+            }
+        ).join("");
+
+}
+
+
+// ========================================
+// ESCAPE
+// ========================================
+
+function escapeHTML(value) {
+
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+</script>
+
+
+</body>
+
+</html>

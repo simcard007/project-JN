@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>เข้าสู่ระบบ | Meeting Room</title>
+
+    <link rel="stylesheet" href="auth.css">
+</head>
+
+<body>
+
+    <div class="auth-container">
+
+        <div class="auth-card">
+
+            <div class="logo">
+                <div class="logo-icon">M</div>
+
+                <h1>Meeting Room</h1>
+
+                <p>ระบบจองห้องประชุม</p>
+            </div>
+
+            <h2>เข้าสู่ระบบ</h2>
+
+            <p class="description">
+                กรุณาเข้าสู่ระบบเพื่อใช้งาน
+            </p>
+
+            <!-- แสดงข้อความ Login สำเร็จ / ไม่สำเร็จ -->
+            <div id="loginMessage" class="message"></div>
+
+            <form id="loginForm">
+
+                <div class="form-group">
+                    <label for="loginUsername">
+                        ชื่อผู้ใช้
+                    </label>
+
+                    <input
+                        type="text"
+                        id="loginUsername"
+                        placeholder="กรอกชื่อผู้ใช้"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="loginPassword">
+                        รหัสผ่าน
+                    </label>
+
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        placeholder="กรอกรหัสผ่าน"
+                    >
+                </div>
+
+                <button type="submit" class="btn">
+                    เข้าสู่ระบบ
+                </button>
+
+            </form>
+
+            <div class="switch">
+                ยังไม่มีบัญชี?
+                <a href="register.html">สมัครสมาชิก</a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="auth.js"></script>
+
+</body>
+
+</html>

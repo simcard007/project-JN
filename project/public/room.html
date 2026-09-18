@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>การจองห้อง | Meeting Room</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+    <div class="sidebar-logo">
+
+        <div class="sidebar-logo-icon">
+            M
+        </div>
+
+        <div>
+
+            <h2>Meeting Room</h2>
+
+            <span>
+                Booking System
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <nav class="sidebar-menu">
+
+        <a
+            href="index.html"
+            class="sidebar-item"
+        >
+            🏠
+            <span>Dashboard</span>
+        </a>
+
+
+        <a
+            href="room.html"
+            class="sidebar-item active"
+        >
+            📅
+            <span>การจองห้อง</span>
+        </a>
+
+
+        <a
+            href="meet.html"
+            class="sidebar-item"
+        >
+            🏢
+            <span>ห้องประชุม</span>
+        </a>
+
+
+        <a
+            href="status.html"
+            class="sidebar-item"
+        >
+            📊
+            <span>สถิติ</span>
+        </a>
+
+
+        <a
+            href="admin.html"
+            id="adminMenu"
+            class="sidebar-item"
+        >
+            ⚙️
+            <span>Admin</span>
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <a
+            href="profile.html"
+            class="sidebar-profile"
+        >
+
+            <div
+                id="sidebarAvatar"
+                class="sidebar-avatar"
+            >
+                U
+            </div>
+
+            <div class="sidebar-user-info">
+
+                <strong id="sidebarUsername">
+                    User
+                </strong>
+
+                <span data-user-role>
+                    User
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <button
+            id="sidebarLogout"
+            class="sidebar-logout"
+        >
+            🚪 ออกจากระบบ
+        </button>
+
+    </div>
+
+</aside>
+
+
+
+<!-- CONTENT -->
+
+<main class="content">
+
+
+    <header class="page-header">
+
+        <div>
+
+            <h1>
+                การจองห้อง
+            </h1>
+
+            <p>
+                รายการจองห้องประชุมของคุณ
+            </p>
+
+        </div>
+
+    </header>
+
+
+
+    <section class="card">
+
+
+        <div class="card-title">
+
+            <div>
+
+                <h2>
+                    รายการจอง
+                </h2>
+
+                <p>
+                    ข้อมูลการจองของบัญชีที่เข้าสู่ระบบ
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            ผู้จอง
+                        </th>
+
+                        <th>
+                            ห้อง
+                        </th>
+
+                        <th>
+                            วันที่
+                        </th>
+
+                        <th>
+                            เวลา
+                        </th>
+
+                        <th>
+                            อุปกรณ์
+                        </th>
+
+                        <th>
+                            จัดการ
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="bookingList">
+
+                    <tr>
+
+                        <td
+                            colspan="6"
+                            class="empty"
+                        >
+                            ยังไม่มีรายการจอง
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

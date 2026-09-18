@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>โปรไฟล์ | Meeting Room</title>
+
+    <link
+        rel="stylesheet"
+        href="profile.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <div class="profile-page">
+
+
+        <!-- Header -->
+
+        <header class="profile-header">
+
+            <div>
+
+                <h1>โปรไฟล์</h1>
+
+                <p>
+                    ข้อมูลบัญชีผู้ใช้งาน
+                </p>
+
+            </div>
+
+
+            <a
+                href="index.html"
+                class="back-btn"
+            >
+                ← กลับหน้าหลัก
+            </a>
+
+        </header>
+
+
+
+        <!-- Profile Card -->
+
+        <main class="profile-container">
+
+
+            <section class="profile-card">
+
+
+                <!-- Avatar -->
+
+                <div
+                    id="profileAvatar"
+                    class="profile-avatar"
+                >
+                    U
+                </div>
+
+
+                <!-- Username -->
+
+                <h2 id="profileUsername">
+                    User
+                </h2>
+
+
+                <!-- Role -->
+
+                <span
+                    id="profileRole"
+                    class="role-badge"
+                >
+                    User
+                </span>
+
+
+                <!-- Information -->
+
+                <div class="profile-info">
+
+
+                    <div class="info-row">
+
+                        <span>
+                            ชื่อผู้ใช้
+                        </span>
+
+                        <strong
+                            id="infoUsername"
+                        >
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span>
+                            สิทธิ์
+                        </span>
+
+                        <strong
+                            id="infoRole"
+                        >
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span>
+                            จำนวนการจอง
+                        </span>
+
+                        <strong
+                            id="infoBookingCount"
+                        >
+                            0
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- Actions -->
+
+                <div class="profile-actions">
+
+
+                    <a
+                        href="index.html"
+                        class="action-btn"
+                    >
+                        ไปหน้าการจอง
+                    </a>
+
+
+                    <a
+                        id="adminProfileButton"
+                        href="admin.html"
+                        class="action-btn admin-btn"
+                    >
+                        Admin Dashboard
+                    </a>
+
+
+                    <button
+                        id="profileLogout"
+                        class="action-btn logout-btn"
+                    >
+                        ออกจากระบบ
+                    </button>
+
+
+                </div>
+
+
+            </section>
+
+
+        </main>
+
+
+    </div>
+
+
+    <script src="profile.js"></script>
+
+</body>
+
+</html>

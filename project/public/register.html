@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>สมัครสมาชิก | Meeting Room</title>
+
+    <link rel="stylesheet" href="auth.css">
+
+</head>
+
+<body>
+
+    <div class="auth-container">
+
+        <div class="auth-card">
+
+            <div class="logo">
+
+                <div class="logo-icon">
+                    M
+                </div>
+
+                <h1>Meeting Room</h1>
+
+                <p>
+                    ระบบจองห้องประชุม
+                </p>
+
+            </div>
+
+
+            <h2>สมัครสมาชิก</h2>
+
+            <p class="description">
+                สร้างบัญชีเพื่อใช้งานระบบ
+            </p>
+
+
+            <div
+                id="registerMessage"
+                class="message">
+            </div>
+
+
+            <form id="registerForm">
+
+
+                <!-- Username -->
+
+                <div class="form-group">
+
+                    <label for="registerUsername">
+                        ชื่อผู้ใช้
+                    </label>
+
+                    <input
+                        type="text"
+                        id="registerUsername"
+                        placeholder="กรอกชื่อผู้ใช้">
+
+                </div>
+
+
+                <!-- Password -->
+
+                <div class="form-group">
+
+                    <label for="registerPassword">
+                        รหัสผ่าน
+                    </label>
+
+                    <input
+                        type="password"
+                        id="registerPassword"
+                        placeholder="กรอกรหัสผ่าน">
+
+                </div>
+
+
+                <!-- Confirm Password -->
+
+                <div class="form-group">
+
+                    <label for="confirmPassword">
+                        ยืนยันรหัสผ่าน
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="กรอกรหัสผ่านอีกครั้ง">
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn">
+
+                    สมัครสมาชิก
+
+                </button>
+
+            </form>
+
+
+            <div class="switch">
+
+                มีบัญชีอยู่แล้ว?
+
+                <a href="login.html">
+                    เข้าสู่ระบบ
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="auth.js"></script>
+
+</body>
+
+</html>
